@@ -15655,7 +15655,7 @@ module.exports = coreJsData;
 
 var LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ "./node_modules/lodash/_LodashWrapper.js"),
     flatRest = __webpack_require__(/*! ./_flatRest */ "./node_modules/lodash/_flatRest.js"),
-    getData = __webpack_require__(/*! ./_getData */ "./node_modules/lodash/_getData.js"),
+    Query = __webpack_require__(/*! ./_Query */ "./node_modules/lodash/_Query.js"),
     getFuncName = __webpack_require__(/*! ./_getFuncName */ "./node_modules/lodash/_getFuncName.js"),
     isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js"),
     isLaziable = __webpack_require__(/*! ./_isLaziable */ "./node_modules/lodash/_isLaziable.js");
@@ -15699,7 +15699,7 @@ function createFlow(fromRight) {
       func = funcs[index];
 
       var funcName = getFuncName(func),
-          data = funcName == 'wrapper' ? getData(func) : undefined;
+          data = funcName == 'wrapper' ? Query(func) : undefined;
 
       if (data && isLaziable(data[0]) &&
             data[1] == (WRAP_ARY_FLAG | WRAP_CURRY_FLAG | WRAP_PARTIAL_FLAG | WRAP_REARG_FLAG) &&
@@ -15800,9 +15800,9 @@ module.exports = freeGlobal;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_getData.js":
+/***/ "./node_modules/lodash/_Query.js":
 /*!*****************************************!*\
-  !*** ./node_modules/lodash/_getData.js ***!
+  !*** ./node_modules/lodash/_Query.js ***!
   \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -15817,11 +15817,11 @@ var metaMap = __webpack_require__(/*! ./_metaMap */ "./node_modules/lodash/_meta
  * @param {Function} func The function to query.
  * @returns {*} Returns the metadata for `func`.
  */
-var getData = !metaMap ? noop : function(func) {
+var Query = !metaMap ? noop : function(func) {
   return metaMap.get(func);
 };
 
-module.exports = getData;
+module.exports = Query;
 
 
 /***/ }),
@@ -16016,7 +16016,7 @@ module.exports = isFlattenable;
 /***/ (function(module, exports, __webpack_require__) {
 
 var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ "./node_modules/lodash/_LazyWrapper.js"),
-    getData = __webpack_require__(/*! ./_getData */ "./node_modules/lodash/_getData.js"),
+    Query = __webpack_require__(/*! ./_Query */ "./node_modules/lodash/_Query.js"),
     getFuncName = __webpack_require__(/*! ./_getFuncName */ "./node_modules/lodash/_getFuncName.js"),
     lodash = __webpack_require__(/*! ./wrapperLodash */ "./node_modules/lodash/wrapperLodash.js");
 
@@ -16038,7 +16038,7 @@ function isLaziable(func) {
   if (func === other) {
     return true;
   }
-  var data = getData(other);
+  var data = Query(other);
   return !!data && func === data[0];
 }
 
@@ -21057,7 +21057,7 @@ module.exports = hoistNonReactStatics;
         });
         return promises;
     }
-    function getDataAndErrorsFromTree(rootElement, rootContext, storeError) {
+    function QueryAndErrorsFromTree(rootElement, rootContext, storeError) {
         if (rootContext === void 0) { rootContext = {}; }
         var promises = getPromisesFromTree({ rootElement: rootElement, rootContext: rootContext });
         if (!promises.length) {
@@ -21066,7 +21066,7 @@ module.exports = hoistNonReactStatics;
         var mappedPromises = promises.map(function (_a) {
             var promise = _a.promise, context = _a.context, instance = _a.instance;
             return promise
-                .then(function (_) { return getDataAndErrorsFromTree(instance.render(), context, storeError); })
+                .then(function (_) { return QueryAndErrorsFromTree(instance.render(), context, storeError); })
                 .catch(function (e) { return storeError(e); });
         });
         return Promise.all(mappedPromises);
@@ -21083,11 +21083,11 @@ module.exports = hoistNonReactStatics;
                 throw wrapperError;
         }
     }
-    function getDataFromTree(rootElement, rootContext) {
+    function QueryFromTree(rootElement, rootContext) {
         if (rootContext === void 0) { rootContext = {}; }
         var errors = [];
         var storeError = function (error) { return errors.push(error); };
-        return getDataAndErrorsFromTree(rootElement, rootContext, storeError).then(function (_) {
+        return QueryAndErrorsFromTree(rootElement, rootContext, storeError).then(function (_) {
             return processErrors(errors);
         });
     }
@@ -22195,7 +22195,7 @@ module.exports = hoistNonReactStatics;
     }
 
     exports.compose = flowRight;
-    exports.getDataFromTree = getDataFromTree;
+    exports.QueryFromTree = QueryFromTree;
     exports.ApolloConsumer = ApolloConsumer;
     exports.ApolloProvider = ApolloProvider;
     exports.Query = Query;

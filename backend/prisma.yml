@@ -1,6 +1,8 @@
-endpoint: ${env:PRISMA_ENDPOINT}
+#endpoint: ${env:PRISMA_ENDPOINT}
+endpoint: https://eu1.prisma.sh/richard-pitts/projectmusaeuserver/dev
 datamodel: datamodel.graphql
-secret: ${env: PRISMA_SECRET}
+secret: ${env:PRISMA_SECRET}
 hooks: 
   post-deploy: 
     - graphql get-schema -p prisma
+  # This helps generate the graphql api found in src/generated/prisma.graphql

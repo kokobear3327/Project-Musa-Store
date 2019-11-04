@@ -1,16 +1,24 @@
+// So this is where we create our GraphQL Yoga server
+// Note: GraphQL is an express server
 const { GraphQLServer } = require('graphql-yoga');
-const ChangeData = require('./resolvers/ChangeData');
-const GetData = require('./resolvers/GetData');
-const db = require('./db');
+// Whenever you add an item, delete an item, etc, you need to use the resolvers.
+const Mutation = require('./resolvers/Mutation');
+const Query = require('./resolvers/Query');
+// Pull in that db you just created too... 
+const db = require('./db'); 
 
-// Do Yoga:
+// Do Yoga aka make your graphQL Yoga server:
 
-function initializeServer() {
+// So what is going on here?  Created a db in the db.js file, injected it here, then
+//    initialized the server where typeDefs must be defined to map to resolvers, 
+//    then in the index you initialize that puppy and map it to the frontend 👍
+
+function initializeServer() { 
     return new GraphQLServer({
         typeDefs: 'src/schema.graphql',
         resolvers: {
-            ChangeData,
-            GetData
+            Mutation,
+            Query
     },
     resolverValidationOptions: {
         requireResolversForResolveType: false
@@ -19,4 +27,4 @@ function initializeServer() {
     });
 }
 
-module.exports = createServer;
+module.exports = initializeServer;

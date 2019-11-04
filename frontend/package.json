@@ -1,7 +1,7 @@
 {
   "name": "project-musa-frontend",
   "version": "1.0.0",
-  "description": "Project Musa Online store using GraphQL and Next.js",
+  "description": "Project Musa Online store using GraphQL, Next.js, Apollo, and Prisma",
   "main": "index.js",
   "scripts": {
     "dev": "next -p 3001",
