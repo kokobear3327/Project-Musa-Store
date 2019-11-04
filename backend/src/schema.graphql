@@ -1,0 +1,12 @@
+# Anything you want exposed in the API goes here.
+type Dog {
+    name: String!
+}
+
+type Mutation {
+    hi: String
+}
+
+type Query {
+    dogs: [Dog]!
+}

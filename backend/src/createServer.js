@@ -13,7 +13,7 @@ const db = require('./db');
 //    initialized the server where typeDefs must be defined to map to resolvers, 
 //    then in the index you initialize that puppy and map it to the frontend 👍
 
-function initializeServer() { 
+function createServer() { 
     return new GraphQLServer({
         typeDefs: 'src/schema.graphql',
         resolvers: {
@@ -27,4 +27,4 @@ function initializeServer() {
     });
 }
 
-module.exports = initializeServer;
+module.exports = createServer;
