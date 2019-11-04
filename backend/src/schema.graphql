@@ -1,10 +1,11 @@
-# Anything you want exposed in the API goes here.
+# Anything you want exposed in the API goes here.  Mutations here have to mirror what you find in schema 
 type Dog {
     name: String!
 }
 
+# Were going to call create dog with a string of name and return a dog.
 type Mutation {
-    hi: String
+    createDog(name: String!): Dog
 }
 
 type Query {

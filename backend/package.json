@@ -1,22 +1,7 @@
 {
   "name": "projectmusabackend",
   "version": "1.0.0",
-  "description": "
-  the backend of the project musa server
-    So the dev script runs nodemon which makes you not need to refresh to see live changes.  It monitors
-      the  -e, or extensions, for files js and even graphql and restarts the server so you don't have to.
-      The node you call to run js files where this runs the index.js.  The --inspect allows you to use
-      the chrome dev tools.
-
-    playground opens the graphql playground to do things like test function calls with the Prisma API.
- 
-    deploy I write in the env file so I don't have to run prisma deploy --env-file environmentVariables.en
-      every time.  
-
-    dev runs both the site and playgound in parallel so you can use em' at the same time ✊debugging.
-     playground is at localhost:3000 and site on localhost:3001
-  
-  ",
+  "description": "",
   "scripts": {
     "start": "nodemon -e js,graphql -x node src/index.js",
     "debug": "nodemon -e js,graphql -x node --inspect src/index.js",
