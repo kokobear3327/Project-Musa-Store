@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -568,7 +568,7 @@ var loading = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["keyframes"]
 var Form = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.form.withConfig({
   displayName: "Form",
   componentId: "sc-1p8ra3w-0"
-})(["box-shadow:0 0 5px 3px rgba(0,0,0,0.05);background:rgba(0,0,0,0.02);border:5px solid white;padding:20px;font-size:1.5rem;line-height:1.5;font-weight:600;label{display:block;margin-bottom:1rem;}input,textarea,select{width:100%;padding:0.5rem;font-size:1rem;border:1px solid black;&:focus{outline:0;border-color:", ";}}button,input[type='submit']{width:auto;background:blue;color:white;border:0;font-size:2rem;font-weight:600;padding:0.5rem 1.2rem;}fieldset{border:0;padding:0;&[disabled]{opacity:0.5;}&::before{height:10px;content:'';display:block;background-image:linear-gradient(to right,#0059E1 0%,#0017DE 50%,#0059E1 100%);}&[aria-busy='true']::before{background-size:50% auto;animation:", " 0.5s linear infinite;}}"], function (props) {
+})(["box-shadow:0 0 5px 3px rgba(0,0,0,0.05);background:rgba(0,0,0,0.02);border:5px solid white;padding:20px;font-size:1.5rem;line-height:1.5;font-weight:600;label{display:block;margin-bottom:1rem;}input,textarea,select{width:100%;padding:0.5rem;font-size:1rem;border:1px solid black;&:focus{outline:0;border-color:", ";}}button,input[type='submit']{width:auto;background:blue;color:white;border:0;font-size:2rem;font-weight:600;margin-right:100px;padding:0.5rem 2rem;}fieldset{border:0;padding:0;&[disabled]{opacity:0.5;npm r}&::before{height:17px;content:'';display:block;background-image:linear-gradient(to right,#0059E1 0%,#0017DE 50%,#0059E1 100%);}&[aria-busy='true']::before{background-size:50% auto;animation:", " 4s linear infinite;}}"], function (props) {
   return props.theme.blue;
 }, loading);
 /* harmony default export */ __webpack_exports__["default"] = (Form);
@@ -637,7 +637,7 @@ var Sell = function Sell(props) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*****************************!*\
   !*** multi ./pages/sell.js ***!
   \*****************************/

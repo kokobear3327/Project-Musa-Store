@@ -35632,7 +35632,7 @@ module.exports = coreJsData;
 
 var LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ "./node_modules/lodash/_LodashWrapper.js"),
     flatRest = __webpack_require__(/*! ./_flatRest */ "./node_modules/lodash/_flatRest.js"),
-    Query = __webpack_require__(/*! ./_Query */ "./node_modules/lodash/_Query.js"),
+    getData = __webpack_require__(/*! ./_getData */ "./node_modules/lodash/_getData.js"),
     getFuncName = __webpack_require__(/*! ./_getFuncName */ "./node_modules/lodash/_getFuncName.js"),
     isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js"),
     isLaziable = __webpack_require__(/*! ./_isLaziable */ "./node_modules/lodash/_isLaziable.js");
@@ -35676,7 +35676,7 @@ function createFlow(fromRight) {
       func = funcs[index];
 
       var funcName = getFuncName(func),
-          data = funcName == 'wrapper' ? Query(func) : undefined;
+          data = funcName == 'wrapper' ? getData(func) : undefined;
 
       if (data && isLaziable(data[0]) &&
             data[1] == (WRAP_ARY_FLAG | WRAP_CURRY_FLAG | WRAP_PARTIAL_FLAG | WRAP_REARG_FLAG) &&
@@ -35777,9 +35777,9 @@ module.exports = freeGlobal;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_Query.js":
+/***/ "./node_modules/lodash/_getData.js":
 /*!*****************************************!*\
-  !*** ./node_modules/lodash/_Query.js ***!
+  !*** ./node_modules/lodash/_getData.js ***!
   \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -35794,11 +35794,11 @@ var metaMap = __webpack_require__(/*! ./_metaMap */ "./node_modules/lodash/_meta
  * @param {Function} func The function to query.
  * @returns {*} Returns the metadata for `func`.
  */
-var Query = !metaMap ? noop : function(func) {
+var getData = !metaMap ? noop : function(func) {
   return metaMap.get(func);
 };
 
-module.exports = Query;
+module.exports = getData;
 
 
 /***/ }),
@@ -35993,7 +35993,7 @@ module.exports = isFlattenable;
 /***/ (function(module, exports, __webpack_require__) {
 
 var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ "./node_modules/lodash/_LazyWrapper.js"),
-    Query = __webpack_require__(/*! ./_Query */ "./node_modules/lodash/_Query.js"),
+    getData = __webpack_require__(/*! ./_getData */ "./node_modules/lodash/_getData.js"),
     getFuncName = __webpack_require__(/*! ./_getFuncName */ "./node_modules/lodash/_getFuncName.js"),
     lodash = __webpack_require__(/*! ./wrapperLodash */ "./node_modules/lodash/wrapperLodash.js");
 
@@ -36015,7 +36015,7 @@ function isLaziable(func) {
   if (func === other) {
     return true;
   }
-  var data = Query(other);
+  var data = getData(other);
   return !!data && func === data[0];
 }
 
@@ -37078,8 +37078,8 @@ function getDisplayName(Component) {
 function withApollo(client, options) {
     var _this = this;
     if (options === void 0) { options = {}; }
-    if (!options.QueryFromTree) {
-        options.QueryFromTree = 'always';
+    if (!options.getDataFromTree) {
+        options.getDataFromTree = 'always';
     }
     return function (App) {
         var _a;
@@ -37124,12 +37124,12 @@ function withApollo(client, options) {
                             if (ctx.res && ctx.res.finished) {
                                 return [2 /*return*/, {}];
                             }
-                            if (!(options.QueryFromTree === 'always' ||
-                                (options.QueryFromTree === 'ssr' && ssrMode))) return [3 /*break*/, 7];
+                            if (!(options.getDataFromTree === 'always' ||
+                                (options.getDataFromTree === 'ssr' && ssrMode))) return [3 /*break*/, 7];
                             _a.label = 3;
                         case 3:
                             _a.trys.push([3, 5, , 6]);
-                            return [4 /*yield*/, react_apollo_1.QueryFromTree(react_1.default.createElement(App, __assign({}, appProps, { Component: Component, router: router, apolloState: apolloState, apollo: apollo })))];
+                            return [4 /*yield*/, react_apollo_1.getDataFromTree(react_1.default.createElement(App, __assign({}, appProps, { Component: Component, router: router, apolloState: apolloState, apollo: apollo })))];
                         case 4:
                             _a.sent();
                             return [3 /*break*/, 6];
@@ -37138,12 +37138,12 @@ function withApollo(client, options) {
                             // Prevent Apollo Client GraphQL errors from crashing SSR.
                             if (true) {
                                 // tslint:disable-next-line no-console This is a necessary debugging log
-                                console.error('GraphQL error occurred [QueryFromTree]', error_1);
+                                console.error('GraphQL error occurred [getDataFromTree]', error_1);
                             }
                             return [3 /*break*/, 6];
                         case 6:
                             if (ssrMode) {
-                                // QueryFromTree does not call componentWillUnmount
+                                // getDataFromTree does not call componentWillUnmount
                                 // head side effect therefore need to be cleared manually
                                 head_1.default.rewind();
                             }
@@ -42412,7 +42412,7 @@ module.exports = hoistNonReactStatics;
         });
         return promises;
     }
-    function QueryAndErrorsFromTree(rootElement, rootContext, storeError) {
+    function getDataAndErrorsFromTree(rootElement, rootContext, storeError) {
         if (rootContext === void 0) { rootContext = {}; }
         var promises = getPromisesFromTree({ rootElement: rootElement, rootContext: rootContext });
         if (!promises.length) {
@@ -42421,7 +42421,7 @@ module.exports = hoistNonReactStatics;
         var mappedPromises = promises.map(function (_a) {
             var promise = _a.promise, context = _a.context, instance = _a.instance;
             return promise
-                .then(function (_) { return QueryAndErrorsFromTree(instance.render(), context, storeError); })
+                .then(function (_) { return getDataAndErrorsFromTree(instance.render(), context, storeError); })
                 .catch(function (e) { return storeError(e); });
         });
         return Promise.all(mappedPromises);
@@ -42438,11 +42438,11 @@ module.exports = hoistNonReactStatics;
                 throw wrapperError;
         }
     }
-    function QueryFromTree(rootElement, rootContext) {
+    function getDataFromTree(rootElement, rootContext) {
         if (rootContext === void 0) { rootContext = {}; }
         var errors = [];
         var storeError = function (error) { return errors.push(error); };
-        return QueryAndErrorsFromTree(rootElement, rootContext, storeError).then(function (_) {
+        return getDataAndErrorsFromTree(rootElement, rootContext, storeError).then(function (_) {
             return processErrors(errors);
         });
     }
@@ -43550,7 +43550,7 @@ module.exports = hoistNonReactStatics;
     }
 
     exports.compose = flowRight;
-    exports.QueryFromTree = QueryFromTree;
+    exports.getDataFromTree = getDataFromTree;
     exports.ApolloConsumer = ApolloConsumer;
     exports.ApolloProvider = ApolloProvider;
     exports.Query = Query;

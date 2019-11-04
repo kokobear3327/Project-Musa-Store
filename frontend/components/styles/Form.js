@@ -41,24 +41,26 @@ const Form = styled.form`
     border: 0;
     font-size: 2rem;
     font-weight: 600;
-    padding: 0.5rem 1.2rem;
+    margin-right: 100px;
+    padding: 0.5rem 2rem;
+
   }
   fieldset {
     border: 0;
     padding: 0;
 
     &[disabled] {
-      opacity: 0.5;
+      opacity: 0.5;npm r
     }
     &::before {
-      height: 10px;
+      height: 17px;
       content: '';
       display: block;
       background-image: linear-gradient(to right, #0059E1 0%, #0017DE 50%, #0059E1 100%);
     }
     &[aria-busy='true']::before {
       background-size: 50% auto;
-      animation: ${loading} 0.5s linear infinite;
+      animation: ${loading} 4s linear infinite;
     }
   }
 `;

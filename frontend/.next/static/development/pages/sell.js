@@ -473,7 +473,7 @@ var loading = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["keyframes"]
 var Form = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].form.withConfig({
   displayName: "Form",
   componentId: "sc-1p8ra3w-0"
-})(["box-shadow:0 0 5px 3px rgba(0,0,0,0.05);background:rgba(0,0,0,0.02);border:5px solid white;padding:20px;font-size:1.5rem;line-height:1.5;font-weight:600;label{display:block;margin-bottom:1rem;}input,textarea,select{width:100%;padding:0.5rem;font-size:1rem;border:1px solid black;&:focus{outline:0;border-color:", ";}}button,input[type='submit']{width:auto;background:blue;color:white;border:0;font-size:2rem;font-weight:600;padding:0.5rem 1.2rem;}fieldset{border:0;padding:0;&[disabled]{opacity:0.5;}&::before{height:10px;content:'';display:block;background-image:linear-gradient(to right,#0059E1 0%,#0017DE 50%,#0059E1 100%);}&[aria-busy='true']::before{background-size:50% auto;animation:", " 0.5s linear infinite;}}"], function (props) {
+})(["box-shadow:0 0 5px 3px rgba(0,0,0,0.05);background:rgba(0,0,0,0.02);border:5px solid white;padding:20px;font-size:1.5rem;line-height:1.5;font-weight:600;label{display:block;margin-bottom:1rem;}input,textarea,select{width:100%;padding:0.5rem;font-size:1rem;border:1px solid black;&:focus{outline:0;border-color:", ";}}button,input[type='submit']{width:auto;background:blue;color:white;border:0;font-size:2rem;font-weight:600;margin-right:100px;padding:0.5rem 2rem;}fieldset{border:0;padding:0;&[disabled]{opacity:0.5;npm r}&::before{height:17px;content:'';display:block;background-image:linear-gradient(to right,#0059E1 0%,#0017DE 50%,#0059E1 100%);}&[aria-busy='true']::before{background-size:50% auto;animation:", " 4s linear infinite;}}"], function (props) {
   return props.theme.blue;
 }, loading);
 /* harmony default export */ __webpack_exports__["default"] = (Form);
@@ -15753,7 +15753,7 @@ module.exports = coreJsData;
 
 var LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ "./node_modules/lodash/_LodashWrapper.js"),
     flatRest = __webpack_require__(/*! ./_flatRest */ "./node_modules/lodash/_flatRest.js"),
-    Query = __webpack_require__(/*! ./_Query */ "./node_modules/lodash/_Query.js"),
+    getData = __webpack_require__(/*! ./_getData */ "./node_modules/lodash/_getData.js"),
     getFuncName = __webpack_require__(/*! ./_getFuncName */ "./node_modules/lodash/_getFuncName.js"),
     isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js"),
     isLaziable = __webpack_require__(/*! ./_isLaziable */ "./node_modules/lodash/_isLaziable.js");
@@ -15797,7 +15797,7 @@ function createFlow(fromRight) {
       func = funcs[index];
 
       var funcName = getFuncName(func),
-          data = funcName == 'wrapper' ? Query(func) : undefined;
+          data = funcName == 'wrapper' ? getData(func) : undefined;
 
       if (data && isLaziable(data[0]) &&
             data[1] == (WRAP_ARY_FLAG | WRAP_CURRY_FLAG | WRAP_PARTIAL_FLAG | WRAP_REARG_FLAG) &&
@@ -15898,9 +15898,9 @@ module.exports = freeGlobal;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_Query.js":
+/***/ "./node_modules/lodash/_getData.js":
 /*!*****************************************!*\
-  !*** ./node_modules/lodash/_Query.js ***!
+  !*** ./node_modules/lodash/_getData.js ***!
   \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -15915,11 +15915,11 @@ var metaMap = __webpack_require__(/*! ./_metaMap */ "./node_modules/lodash/_meta
  * @param {Function} func The function to query.
  * @returns {*} Returns the metadata for `func`.
  */
-var Query = !metaMap ? noop : function(func) {
+var getData = !metaMap ? noop : function(func) {
   return metaMap.get(func);
 };
 
-module.exports = Query;
+module.exports = getData;
 
 
 /***/ }),
@@ -16114,7 +16114,7 @@ module.exports = isFlattenable;
 /***/ (function(module, exports, __webpack_require__) {
 
 var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ "./node_modules/lodash/_LazyWrapper.js"),
-    Query = __webpack_require__(/*! ./_Query */ "./node_modules/lodash/_Query.js"),
+    getData = __webpack_require__(/*! ./_getData */ "./node_modules/lodash/_getData.js"),
     getFuncName = __webpack_require__(/*! ./_getFuncName */ "./node_modules/lodash/_getFuncName.js"),
     lodash = __webpack_require__(/*! ./wrapperLodash */ "./node_modules/lodash/wrapperLodash.js");
 
@@ -16136,7 +16136,7 @@ function isLaziable(func) {
   if (func === other) {
     return true;
   }
-  var data = Query(other);
+  var data = getData(other);
   return !!data && func === data[0];
 }
 
@@ -21167,7 +21167,7 @@ module.exports = hoistNonReactStatics;
         });
         return promises;
     }
-    function QueryAndErrorsFromTree(rootElement, rootContext, storeError) {
+    function getDataAndErrorsFromTree(rootElement, rootContext, storeError) {
         if (rootContext === void 0) { rootContext = {}; }
         var promises = getPromisesFromTree({ rootElement: rootElement, rootContext: rootContext });
         if (!promises.length) {
@@ -21176,7 +21176,7 @@ module.exports = hoistNonReactStatics;
         var mappedPromises = promises.map(function (_a) {
             var promise = _a.promise, context = _a.context, instance = _a.instance;
             return promise
-                .then(function (_) { return QueryAndErrorsFromTree(instance.render(), context, storeError); })
+                .then(function (_) { return getDataAndErrorsFromTree(instance.render(), context, storeError); })
                 .catch(function (e) { return storeError(e); });
         });
         return Promise.all(mappedPromises);
@@ -21193,11 +21193,11 @@ module.exports = hoistNonReactStatics;
                 throw wrapperError;
         }
     }
-    function QueryFromTree(rootElement, rootContext) {
+    function getDataFromTree(rootElement, rootContext) {
         if (rootContext === void 0) { rootContext = {}; }
         var errors = [];
         var storeError = function (error) { return errors.push(error); };
-        return QueryAndErrorsFromTree(rootElement, rootContext, storeError).then(function (_) {
+        return getDataAndErrorsFromTree(rootElement, rootContext, storeError).then(function (_) {
             return processErrors(errors);
         });
     }
@@ -22305,7 +22305,7 @@ module.exports = hoistNonReactStatics;
     }
 
     exports.compose = flowRight;
-    exports.QueryFromTree = QueryFromTree;
+    exports.getDataFromTree = getDataFromTree;
     exports.ApolloConsumer = ApolloConsumer;
     exports.ApolloProvider = ApolloProvider;
     exports.Query = Query;
@@ -29084,7 +29084,7 @@ var Sell = function Sell(props) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*****************************!*\
   !*** multi ./pages/sell.js ***!
   \*****************************/
@@ -29109,5 +29109,5 @@ module.exports = dll_5d62d38be3592dca3a42;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]));;
+},[[5,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=sell.js.map
