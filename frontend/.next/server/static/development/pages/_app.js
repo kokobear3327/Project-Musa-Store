@@ -1413,7 +1413,7 @@ function (_React$Component) {
         }, function (createOrder) {
           return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_stripe_checkout__WEBPACK_IMPORTED_MODULE_2___default.a, {
             amount: Object(_lib_calcTotalPrice__WEBPACK_IMPORTED_MODULE_8__["default"])(me.cart),
-            name: "Sick Fits",
+            name: "Project Musa",
             description: "Order of ".concat(totalItems(me.cart), " items!"),
             image: me.cart.length && me.cart[0].item && me.cart[0].item.image,
             stripeKey: "pk_test_Vtknn6vSdcZWSG2JWvEiWSqC",
@@ -1689,8 +1689,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_with_apollo__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_with_apollo__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../config */ "./config.js");
 /* harmony import */ var _components_Cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Cart */ "./components/Cart.js");
-// This has all of the standard things you would want to use.  Apollo Boost includes apollo-client
- // withApollo then exposes what in the client database provided by apollo-boost via a prop...helps with server-side rendering
+//  Apollo Boost includes apollo-client and a bunch of other goodies 👍
+ // nextWithApollo then exposes the client database via a prop...helps with server-side rendering
 
 
 
@@ -1794,8 +1794,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
- // reminder: const destructuring syntax below makes it effectively this.props.apollo
-// getInitialProps is a special next.js lifecycle method.
+ // Reminder: const destructuring syntax below makes it effectively this.props.apollo
+//   getInitialProps is a special next.js lifecycle method:  
+//     It crawls for any mutations that need fetching and makes pageProps 'work'
+//   If you don't wrap the app in the apollo provider, you get client errors, much like provider
+//   in redux.
 
 var MyApp =
 /*#__PURE__*/
@@ -1818,26 +1821,26 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_2__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 25
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_4__["ApolloProvider"], {
         client: apollo,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 26
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Page__WEBPACK_IMPORTED_MODULE_3__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 27
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Component, _extends({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 28
         },
         __self: this
       })))));
@@ -1889,7 +1892,8 @@ function (_App) {
   }]);
 
   return MyApp;
-}(next_app__WEBPACK_IMPORTED_MODULE_2___default.a);
+}(next_app__WEBPACK_IMPORTED_MODULE_2___default.a); // So withData makes the apollo client accessible
+
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(_lib_withData__WEBPACK_IMPORTED_MODULE_5__["default"])(MyApp));
 

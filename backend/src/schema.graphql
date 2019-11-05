@@ -1,9 +1,11 @@
 # import * from './generated/prisma.graphql'
+""" That is how you write an import statement in graphql ^^^ : This is a comment """
 
 type SuccessMessage {
   message: String
 }
 
+""" Here it is saying you return item with : Item! as """
 type Mutation {
   createItem(title: String, description: String, price: Int, image: String, largeImage: String): Item!
   updateItem(id: ID!, title: String, description: String, price: Int): Item!

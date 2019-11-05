@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -261,7 +261,7 @@ function (_Component) {
 
   _createClass(CreateItem, [{
     key: "render",
-    // Only in React can you have a self closing text area tag.
+    // Only in React can you have a self closing text area tag.  Also htmlFor is for but for react.
     // Just like query, the only child of a mutation can be a function
     // The fieldset disabled means that if its loading, it will be greyed out
     // The aria-busy does the animation bar for us, edit this in the form.js file wher ethe animation is applied
@@ -274,7 +274,7 @@ function (_Component) {
         variables: this.state,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 76
+          lineNumber: 75
         },
         __self: this
       }, function (createItem, _ref2) {
@@ -322,19 +322,19 @@ function (_Component) {
           }(),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 78
+            lineNumber: 77
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ErrorMessage__WEBPACK_IMPORTED_MODULE_7__["default"], {
           error: error,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 91
+            lineNumber: 90
           },
           __self: this
         }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("fieldset", {
           disabled: loading,
-          "aria-busy": loading,
+          "aria-busy": true,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 92
@@ -568,7 +568,7 @@ var loading = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["keyframes"]
 var Form = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.form.withConfig({
   displayName: "Form",
   componentId: "sc-1p8ra3w-0"
-})(["box-shadow:0 0 5px 3px rgba(0,0,0,0.05);background:rgba(0,0,0,0.02);border:5px solid white;padding:20px;font-size:1.5rem;line-height:1.5;font-weight:600;label{display:block;margin-bottom:1rem;}input,textarea,select{width:100%;padding:0.5rem;font-size:1rem;border:1px solid black;&:focus{outline:0;border-color:", ";}}button,input[type='submit']{width:auto;background:blue;color:white;border:0;font-size:2rem;font-weight:600;margin-right:100px;padding:0.5rem 2rem;}fieldset{border:0;padding:0;&[disabled]{opacity:0.5;npm r}&::before{height:17px;content:'';display:block;background-image:linear-gradient(to right,#0059E1 0%,#0017DE 50%,#0059E1 100%);}&[aria-busy='true']::before{background-size:50% auto;animation:", " 4s linear infinite;}}"], function (props) {
+})(["box-shadow:0 0 5px 3px rgba(0,0,0,0.05);background:rgba(0,0,0,0.02);border:5px solid white;padding:20px;font-size:1.5rem;line-height:1.5;font-weight:600;label{display:block;margin-bottom:1rem;}input,textarea,select{width:100%;padding:0.5rem;font-size:1rem;border:1px solid black;&:focus{outline:0;border-color:", ";}}button,input[type='submit']{width:auto;background:blue;color:white;border:0;font-size:2rem;font-weight:600;margin-right:100px;padding:0.5rem 2rem;}fieldset{border:0;padding:0;&[disabled]{opacity:0.5;}&::before{height:21px;content:'';display:block;background-image:linear-gradient(to right,#0059E1 0%,#82bbe7 50%,#0059E1 100%);}&[aria-busy='true']::before{background-size:50% auto;animation:", " 2.3s cubic-bezier(0.35,0.12,0.165,1) infinite;}}"], function (props) {
   return props.theme.blue;
 }, loading);
 /* harmony default export */ __webpack_exports__["default"] = (Form);
@@ -637,7 +637,7 @@ var Sell = function Sell(props) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!*****************************!*\
   !*** multi ./pages/sell.js ***!
   \*****************************/

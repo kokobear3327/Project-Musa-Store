@@ -50,17 +50,17 @@ const Form = styled.form`
     padding: 0;
 
     &[disabled] {
-      opacity: 0.5;npm r
+      opacity: 0.5;
     }
     &::before {
-      height: 17px;
+      height: 21px;
       content: '';
       display: block;
-      background-image: linear-gradient(to right, #0059E1 0%, #0017DE 50%, #0059E1 100%);
+      background-image: linear-gradient(to right, #0059E1 0%, #82bbe7 50%, #0059E1 100%);
     }
     &[aria-busy='true']::before {
       background-size: 50% auto;
-      animation: ${loading} 4s linear infinite;
+      animation: ${loading} 2.3s cubic-bezier(0.35, 0.12, 0.165, 1) infinite;
     }
   }
 `;
